@@ -11,10 +11,15 @@ void inserir(int elemento){
         int posicao = (inicio + n_elementos) % (maximo);
         fila[posicao] = elemento;
         n_elementos ++;
-        printf("%i ",n_elementos);
     }
     else{
         printf("\n\nNumero maximo de elementos atingido\n\n");
+    }
+}
+
+void printar_fila(int fila[]){
+    for(int i = 0; i<n_elementos; i++){
+        printf("%i ",fila[i]);
     }
 }
 
@@ -26,7 +31,6 @@ int main(int argc, char *argv[]){
     inserir(32);
     inserir(64);
 
-    for(int i = 0; i<n_elementos; i++){
-        printf("%i ",fila[i]);
-    }
+printar_fila(fila);
+
 }
