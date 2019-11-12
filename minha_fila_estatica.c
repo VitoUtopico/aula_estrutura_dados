@@ -21,16 +21,48 @@ void printar_fila(int fila[]){
     for(int i = 0; i<n_elementos; i++){
         printf("%i ",fila[i]);
     }
+    printf("\n");
+}
+
+void remover(){
+    if(n_elementos > 0){
+        inicio ++;
+        n_elementos --;
+    }
+    else{
+        printf("\n\nFila vazia\n\n");
+    }
+    
 }
 
 int main(int argc, char *argv[]){
+    printar_fila(fila);
     inserir(2);
+    printar_fila(fila);
     inserir(5);
+    printar_fila(fila);
     inserir(14);
+    printar_fila(fila);
     inserir(12);
+    printar_fila(fila);
     inserir(32);
+    printar_fila(fila);
     inserir(64);
-
-printar_fila(fila);
-
+    printar_fila(fila);
+    inserir(53);
+    printar_fila(fila);
+    remover();
+    printar_fila(fila);
+    remover();
+    printar_fila(fila);
+    remover();
+    printar_fila(fila);
+    remover();
+    printar_fila(fila);
+    remover();
+    printar_fila(fila);
+    remover();
+    printar_fila(fila);
+    remover();
+    printar_fila(fila);
 }
