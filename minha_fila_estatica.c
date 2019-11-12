@@ -1,0 +1,31 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int inicio = 0;
+int n_elementos = 0;
+int fila[5];
+
+void inserir(int elemento){
+    if(n_elementos < (sizeof(fila)/sizeof(int))){
+        int posicao = inicio + n_elementos;
+        fila[posicao] = elemento;
+        n_elementos ++;
+    }
+    else{
+        printf("\n\nNumero maximo de elementos atingido\n\n");
+    }
+    
+}
+
+int main(int argc, char *argv[]){
+    inserir(2);
+    inserir(5);
+    inserir(14);
+    inserir(12);
+    inserir(32);
+    inserir(64);
+
+    for(int i = 0; i<n_elementos; i++){
+        printf("%i ",fila[i]);
+    }
+}
