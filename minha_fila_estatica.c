@@ -4,17 +4,18 @@
 int inicio = 0;
 int n_elementos = 0;
 int fila[5];
+int maximo = sizeof(fila)/sizeof(int);
 
 void inserir(int elemento){
-    if(n_elementos < (sizeof(fila)/sizeof(int))){
-        int posicao = inicio + n_elementos;
+    if(n_elementos < maximo){
+        int posicao = (inicio + n_elementos) % (maximo);
         fila[posicao] = elemento;
         n_elementos ++;
+        printf("%i ",n_elementos);
     }
     else{
         printf("\n\nNumero maximo de elementos atingido\n\n");
     }
-    
 }
 
 int main(int argc, char *argv[]){
