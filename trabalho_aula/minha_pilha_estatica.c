@@ -2,36 +2,56 @@
 #include<stdlib.h>
 #include<conio.h>
 
+/*
+Definição da estrutura da pilha, composta pelo "número de elementos atual"
+e um vetor de elementos da pilha
+*/
+
 typedef struct STACK{
     int n_elementos;
     int elementos[5];
 }Stack;
 
+/*
+Inicialização para que o contador de elementos comece do 0. Caso não
+se inicialize o contador, ele pode ocupar um espaço de memória com qualquer
+tipo de conteúdo diferente do 0 esperado
+*/
 void inicializa(Stack *ptr_stack){
     ptr_stack->n_elementos = 0;
 }
 
+/*
+Inserção de dados
+*/
 void insere(Stack *ptr_stack, int elemento){
-    int maximo = (sizeof(ptr_stack->elementos) / sizeof(int));
+    int maximo = (sizeof(ptr_stack->elementos) / sizeof(int));  //"maximo" recebe o tamanho do vetor
+                                                                //de elementos.
     
-    if (ptr_stack->n_elementos < maximo){
-        ptr_stack->elementos[ptr_stack->n_elementos] = elemento;
-        ptr_stack->n_elementos++;
+    if (ptr_stack->n_elementos < maximo){                       //If para que o valor seja inserido
+        ptr_stack->elementos[ptr_stack->n_elementos] = elemento;//apenas caso o vetor não tenha
+        ptr_stack->n_elementos++;                               //atingido seu tamanho máximo.
     }
     else{
-        printf("Numero maximo de elementos atingido.\n");
-    }    
+        printf("Numero maximo de elementos atingido.\n");       //Caso contrário retorna uma mensagem
+    }                                                           //indicando pilha cheia ao usuário.
 }
 
+/*
+Remoção de dado do topo da pilha
+*/
 void retira(Stack *ptr_stack){
-    if(ptr_stack->n_elementos > 0){
-        ptr_stack->n_elementos --;
-    }
+    if(ptr_stack->n_elementos > 0){ //Caso o número de elementos seja maior que 0, "n_elementos"
+        ptr_stack->n_elementos --;  //é decrementado, passando a indicar como último elemento, o
+    }                               //anterior.
     else{
-        printf("Impossivel retirar elemento \nPilha vazia.\n");
-    }
+        printf("Impossivel retirar elemento \nPilha vazia.\n");//Caso contrário, retorna uma mensagem
+    }                                                          //de pilha vazia ao usuário
 }
 
+/* 
+Apresenta todos dados contidos na pilha
+*/
 void print_stack(Stack *ptr_stack){
     for (int i = 0; i < ptr_stack->n_elementos; i ++){
         printf("Elemento %d: %d\n", i, ptr_stack->elementos[i]);
