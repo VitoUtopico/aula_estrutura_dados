@@ -2,15 +2,17 @@
 #include<stdlib.h>
 #include<conio.h>
 
+#define MAXIMO 5 //Define número máximo de elementos para a pilha
+
 /*
 Definição da estrutura da pilha, composta pelo "número de elementos atual"
 e um vetor de elementos da pilha
 */
-
 typedef struct STACK{
     int n_elementos;
-    int elementos[5];
+    int elementos[MAXIMO];
 }Stack;
+
 
 /*
 Inicialização para que o contador de elementos comece do 0. Caso não
@@ -24,11 +26,8 @@ void inicializa(Stack *ptr_stack){
 /*
 Inserção de dados
 */
-void insere(Stack *ptr_stack, int elemento){
-    int maximo = (sizeof(ptr_stack->elementos) / sizeof(int));  //"maximo" recebe o tamanho do vetor
-                                                                //de elementos.
-    
-    if (ptr_stack->n_elementos < maximo){                       //If para que o valor seja inserido
+void insere(Stack *ptr_stack, int elemento){    
+    if (ptr_stack->n_elementos < MAXIMO){                       //If para que o valor seja inserido
         ptr_stack->elementos[ptr_stack->n_elementos] = elemento;//apenas caso o vetor não tenha
         ptr_stack->n_elementos++;                               //atingido seu tamanho máximo.
     }
@@ -72,7 +71,7 @@ int main(int argc, char const *argv[]){
     retira(&stack);
     retira(&stack);
     retira(&stack);
-    insere(&stack, 15);
+    insere(&stack, 3);
     insere(&stack, 5);
     insere(&stack, 51);
     insere(&stack, 89);
