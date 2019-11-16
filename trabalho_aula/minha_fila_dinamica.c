@@ -16,6 +16,17 @@ void inicializa(Fila *fila){
     fila->fim = NULL;
 }
 
+void inserir(Fila *fila, int dado){
+    Elemento *novo = (Elemento*) malloc(sizeof(Elemento));
+    novo->dado = dado;
+    novo->proximo = NULL;
+
+    if(fila->inicio == NULL){   //Caso inicio valha NULL, a fila está vazia, então o novo elemento
+        fila->inicio = novo;    //passa a ser apontado por inicio como primeiro elemento da fila.
+    }
+    fila->fim = novo;
+}
+
 
 int main(int argc, char *argv[]){
 
