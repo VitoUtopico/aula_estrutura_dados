@@ -1,6 +1,5 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<stdbool.h>
 
 typedef struct ELEMENTO{
     int dado;
@@ -25,6 +24,9 @@ void inserir(Fila *fila, int dado){
     if(fila->inicio == NULL){   //Caso inicio valha NULL, a fila está vazia, então o novo elemento
         fila->inicio = novo;    //passa a ser apontado por inicio como primeiro elemento da fila.
     }
+    else{
+        fila->fim->proximo = novo;
+    }
     fila->fim = novo;
 }
 
@@ -36,7 +38,18 @@ void remover(Fila *fila){
     free(deletar);
     }
     else{
-        printf("Fila vazia");
+        printf("Fila vazia\n");
+    }
+}
+
+void printa_fila(Fila *fila){
+    int i = 0;
+    Elemento *printar;
+    printar = fila->inicio;
+    while(printar != NULL){
+        printf("Elemento %d: %d\n", i+1, printar->dado);
+        i++;
+        printar = printar->proximo;
     }
 }
 
@@ -45,9 +58,11 @@ int main(int argc, char *argv[]){
     Fila fila1;
     inicializa(&fila1);
     inserir(&fila1, 5);
-    remover(&fila1);
     inserir(&fila1, 7);
+    inserir(&fila1, 15);
     remover(&fila1);
-    remover(&fila1);
-    printf("%d", fila1.inicio->dado);
+    inserir(&fila1, 10);
+    inserir(&fila1, 21);
+    printa_fila(&fila1);
+    
 }
