@@ -64,6 +64,7 @@ int main(int argc, char const *argv[]){
     Stack stack;
 
     inicializa(&stack);
+    
     insere(&stack, 2);
     retira(&stack);
     insere(&stack, 15);
